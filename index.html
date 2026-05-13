@@ -601,7 +601,8 @@
     cards.forEach(card => {
       const tags = card.dataset.tags || '';
       const title = card.dataset.title || '';
-      const matchFilter = activeFilter === 'all' || tags.includes(activeFilter);
+      const tagWords = tags.split(' ');
+      const matchFilter = activeFilter === 'all' || tagWords.includes(activeFilter);
       const matchSearch = !query || title.includes(query) || tags.includes(query);
       const show = matchFilter && matchSearch;
       card.style.display = show ? '' : 'none';
