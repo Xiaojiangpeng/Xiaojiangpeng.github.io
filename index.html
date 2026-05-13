@@ -1,763 +1,622 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Robert Peng | Data & AI Leader</title>
-  <meta name="description" content="Robert Peng — IT Lead & AI Architect. Enterprise data platforms, Power BI, Tableau, Snowflake, ETL, and GenAI/LLM solutions."/>
-  <style>
-    :root{
-      /* Executive Light (default) */
-      --bg:#f7f8fb;
-      --surface:#ffffff;
-      --surface2:#fbfcff;
-      --text:#0b1220;
-      --muted:#556070;
-      --border:rgba(11,18,32,.10);
-      --shadow:0 16px 40px rgba(11,18,32,.08);
-      --accent:#0ea5e9;
-      --accent2:#22c55e;
-      --ring:rgba(14,165,233,.25);
-      --chip:#eef2ff;
-      --chipText:#1f2937;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Robert Peng — IT Lead & AI Architect. Enterprise data platforms, Power BI, Snowflake, ETL, and GenAI/LLM solutions.">
+<title>Robert Peng | Data & AI Leader</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      --radius:22px;
-    }
-    html[data-theme="dark"]{
-      /* Modern Dark Portfolio */
-      --bg:#0b1220;
-      --surface:#0f172a;
-      --surface2:#111a2b;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --border:rgba(255,255,255,.10);
-      --shadow:0 18px 55px rgba(0,0,0,.35);
-      --accent:#60a5fa;
-      --accent2:#34d399;
-      --ring:rgba(96,165,250,.25);
-      --chip:rgba(255,255,255,.06);
-      --chipText:#e5e7eb;
-    }
+  :root {
+    --bg: #ffffff; --bg2: #f8f9fa; --bg3: #f0f2f5;
+    --text: #1a1a2e; --text2: #4a5568; --text3: #718096;
+    --accent: #2b6cb0; --accent2: #3182ce; --accent-light: #ebf8ff;
+    --border: #e2e8f0; --border2: #cbd5e0;
+    --tag-bg: #edf2f7; --tag-text: #4a5568;
+    --metric-color: #2b6cb0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow2: 0 4px 12px rgba(0,0,0,0.08);
+    --radius: 6px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:var(--sans);
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 10% -10%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 60%),
-        radial-gradient(900px 500px at 90% 0%, color-mix(in oklab, var(--accent2) 18%, transparent), transparent 55%),
-        var(--bg);
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1120px;margin:0 auto;padding:28px 18px 70px}
-    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{left:18px;top:18px;width:auto;height:auto;background:var(--surface);padding:10px 12px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);z-index:999}
+  [data-theme="dark"] {
+    --bg: #0f1117; --bg2: #161b27; --bg3: #1e2535;
+    --text: #e8edf5; --text2: #94a3b8; --text3: #64748b;
+    --accent: #60a5fa; --accent2: #3b82f6; --accent-light: #1e3a5f;
+    --border: #1e2d3d; --border2: #2d3f55;
+    --tag-bg: #1e2535; --tag-text: #94a3b8;
+    --metric-color: #60a5fa;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow2: 0 4px 12px rgba(0,0,0,0.3);
+  }
 
-    /* Top Nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      background:color-mix(in oklab, var(--bg) 84%, transparent);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner{
-      max-width:1120px;margin:0 auto;padding:12px 18px;
-      display:flex;align-items:center;justify-content:space-between;gap:14px;
-    }
-    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}
-    .logo{
-      width:38px;height:38px;border-radius:14px;
-      background:linear-gradient(135deg, color-mix(in oklab, var(--accent) 90%, white), color-mix(in oklab, var(--accent2) 70%, white));
-      box-shadow:0 10px 30px color-mix(in oklab, var(--accent) 24%, transparent);
-    }
-    .navlinks{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-    .navlinks a{
-      font-weight:800;font-size:13px;color:var(--muted);
-      padding:8px 10px;border-radius:999px;border:1px solid transparent;
-    }
-    .navlinks a:hover{color:var(--text);border-color:var(--border);background:color-mix(in oklab, var(--surface) 65%, transparent)}
-    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .btn{
-      cursor:pointer;border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface) 70%, transparent);
-      color:var(--text);
-      padding:10px 12px;border-radius:14px;
-      font-weight:900;font-size:13px;
-      display:inline-flex;align-items:center;gap:8px;
-      box-shadow:0 10px 25px rgba(0,0,0,.00);
-    }
-    .btn:hover{border-color:color-mix(in oklab, var(--accent) 35%, var(--border)); box-shadow:0 12px 30px rgba(0,0,0,.08)}
-    .btn.primary{
-      border-color:color-mix(in oklab, var(--accent) 38%, var(--border));
-      background:linear-gradient(90deg,
-        color-mix(in oklab, var(--accent) 22%, transparent),
-        color-mix(in oklab, var(--accent2) 14%, transparent)
-      );
-    }
-    .btn.ghost{
-      background:transparent;
-    }
-    .icon{width:16px;height:16px;display:inline-block}
-    .kbd{
-      font-family:var(--mono);
-      font-size:11px;
-      padding:2px 6px;
-      border-radius:8px;
-      border:1px solid var(--border);
-      color:var(--muted);
-      background:color-mix(in oklab, var(--surface2) 70%, transparent);
-    }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    /* Hero */
-    .hero{
-      margin-top:22px;
-      display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:stretch;
-    }
-    @media(max-width:980px){ .hero{grid-template-columns:1fr} }
-    .card{
-      border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface) 82%, transparent);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
-    .hero-left{padding:22px}
-    .kicker{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:8px 12px;border-radius:999px;border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface2) 80%, transparent);
-      color:var(--muted);font-weight:900;font-size:12px;
-    }
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-    h1{margin:14px 0 10px;font-size:44px;line-height:1.05;letter-spacing:-.6px}
-    @media(max-width:520px){h1{font-size:36px}}
-    .headline{margin:0 0 14px;color:var(--muted);font-weight:800}
-    .bio{margin:0;color:var(--text);opacity:.92;line-height:1.6}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 10px;border-radius:999px;border:1px solid var(--border);
-      background:var(--chip);
-      color:var(--chipText);
-      font-weight:900;font-size:12px;
-    }
-    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .small{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.4}
-    .hero-right{display:grid;gap:12px}
-    .metric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .metric{
-      border-radius:18px;border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface2) 84%, transparent);
-      padding:14px;
-    }
-    .metric .label{color:var(--muted);font-weight:900;font-size:12px}
-    .metric .value{font-size:22px;font-weight:950;margin:6px 0 2px}
-    .metric .note{color:var(--muted);font-size:12px}
+  .skip-link { position: absolute; top: -99px; left: 8px; background: var(--accent); color: #fff; padding: 8px 16px; border-radius: var(--radius); font-size: 14px; z-index: 9999; transition: top 0.2s; }
+  .skip-link:focus { top: 8px; }
 
-    /* Sections */
-    section{margin-top:22px}
-    .section-title{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      margin:26px 0 12px;
-    }
-    .section-title h2{margin:0;font-size:18px;letter-spacing:.1px}
-    .section-title .hint{color:var(--muted);font-size:12px;font-weight:800}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px; }
+  .nav-brand { font-weight: 700; font-size: 15px; color: var(--text); display: flex; flex-direction: column; line-height: 1.2; }
+  .nav-brand small { font-size: 10px; font-weight: 400; color: var(--text3); letter-spacing: 0.5px; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--text2); padding: 6px 12px; border-radius: var(--radius); transition: background 0.2s, color 0.2s; }
+  .nav-links a:hover { background: var(--bg2); color: var(--text); text-decoration: none; }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .btn-theme { background: var(--bg2); border: 1px solid var(--border); color: var(--text2); padding: 6px 12px; border-radius: var(--radius); font-size: 12px; cursor: pointer; transition: all 0.2s; font-family: var(--font); }
+  .btn-theme:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: var(--radius); font-size: 12px; font-weight: 500; border: 1px solid var(--border); color: var(--text2); background: var(--bg); transition: all 0.2s; }
+  .btn-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
-    /* Experience Cards */
-    .exp{padding:16px 18px 14px}
-    .exp-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
-    .role{font-weight:950}
-    .org{color:var(--muted);font-weight:900;font-size:13px;margin-top:4px}
-    .dates{color:var(--muted);font-weight:900;font-size:12px;white-space:nowrap}
-    ul{margin:10px 0 0 18px;padding:0}
-    li{margin:7px 0;line-height:1.45;color:color-mix(in oklab, var(--text) 92%, var(--muted))}
+  /* LAYOUT */
+  #content { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
 
-    /* Skills */
-    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    @media(max-width:900px){.skills{grid-template-columns:1fr}}
-    .skill{
-      padding:14px 14px 10px;
-      border-radius:18px;border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface2) 84%, transparent);
-    }
-    .skill h3{margin:0 0 10px;font-size:14px}
+  /* HERO */
+  .hero { padding: 64px 0 48px; border-bottom: 1px solid var(--border); }
+  .hero-eyebrow { font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .hero-subtitle { font-size: 15px; color: var(--text2); margin-bottom: 24px; }
+  .hero-desc { font-size: 15px; color: var(--text2); line-height: 1.8; max-width: 680px; margin-bottom: 28px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .hero-tag { padding: 4px 12px; background: var(--tag-bg); color: var(--tag-text); border-radius: 99px; font-size: 12px; font-weight: 500; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; background: var(--accent); color: #fff; border-radius: var(--radius); font-size: 13px; font-weight: 600; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.88; text-decoration: none; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; background: var(--bg2); color: var(--text); border: 1px solid var(--border2); border-radius: var(--radius); font-size: 13px; font-weight: 500; transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
-    /* Projects + filters */
-    .proj-controls{
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
-      margin:12px 0 2px;
-    }
-    .search{
-      flex:1 1 260px;
-      display:flex;align-items:center;gap:10px;
-      border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface2) 82%, transparent);
-      padding:10px 12px;border-radius:16px;
-    }
-    .search input{
-      width:100%;
-      border:0; outline:none; background:transparent;
-      color:var(--text);
-      font-weight:800;
-      font-size:13px;
-    }
-    .filters{
-      display:flex;gap:8px;flex-wrap:wrap;align-items:center;
-    }
-    .filter{
-      cursor:pointer;
-      border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface2) 75%, transparent);
-      color:var(--muted);
-      padding:8px 10px;border-radius:999px;
-      font-weight:900;font-size:12px;
-    }
-    .filter[aria-pressed="true"]{
-      color:var(--text);
-      border-color:color-mix(in oklab, var(--accent) 35%, var(--border));
-      background:linear-gradient(90deg,
-        color-mix(in oklab, var(--accent) 18%, transparent),
-        color-mix(in oklab, var(--accent2) 12%, transparent)
-      );
-    }
-    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    @media(max-width:980px){.projects{grid-template-columns:1fr}}
-    .proj{
-      padding:16px;border-radius:18px;border:1px solid var(--border);
-      background:color-mix(in oklab, var(--surface2) 84%, transparent);
-    }
-    .proj h3{margin:0 0 8px;font-size:15px}
-    .proj p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}
-    .proj .tags{margin-top:12px}
-    .badge{
-      display:inline-flex;align-items:center;
-      padding:6px 10px;border-radius:999px;
-      border:1px solid var(--border);
-      color:var(--muted);
-      font-weight:900;font-size:11px;
-      background:transparent;
-      margin-right:8px;
-    }
-    .empty{
-      padding:18px;border-radius:18px;border:1px dashed var(--border);
-      color:var(--muted);font-weight:900;
-      background:color-mix(in oklab, var(--surface2) 80%, transparent);
-    }
+  /* SECTIONS */
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); margin-bottom: 24px; }
 
-    /* Contact */
-    .contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .footer{margin-top:30px;color:var(--muted);font-size:12px;text-align:center}
+  /* METRICS */
+  .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .metric-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+  .metric-value { font-size: 28px; font-weight: 800; color: var(--metric-color); line-height: 1; margin-bottom: 6px; font-family: var(--mono); }
+  .metric-label { font-size: 12px; color: var(--text3); line-height: 1.4; }
+  .metric-context { font-size: 10px; color: var(--accent); font-weight: 500; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    /* Focus ring */
-    :focus{outline:none}
-    :focus-visible{box-shadow:0 0 0 4px var(--ring);border-radius:14px}
-  </style>
+  /* NOW */
+  .now-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .now-item { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; color: var(--text2); }
+  .now-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+
+  /* EXPERIENCE */
+  .exp-item { padding: 28px 0; border-bottom: 1px solid var(--border); }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; flex-wrap: wrap; gap: 8px; }
+  .exp-role { font-size: 16px; font-weight: 700; color: var(--text); }
+  .exp-period { font-size: 12px; color: var(--text3); font-family: var(--mono); white-space: nowrap; }
+  .exp-company { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 16px; }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-list li { font-size: 14px; color: var(--text2); line-height: 1.7; padding-left: 16px; position: relative; }
+  .exp-list li::before { content: '–'; position: absolute; left: 0; color: var(--text3); }
+  .exp-list li strong { color: var(--text); font-weight: 600; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill-group h3 { font-size: 12px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag { padding: 3px 10px; background: var(--tag-bg); color: var(--tag-text); border-radius: 4px; font-size: 12px; font-weight: 500; border: 1px solid var(--border); transition: all 0.2s; }
+  .skill-tag:hover { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+  /* PROJECTS */
+  .projects-toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .search-input { flex: 1; min-width: 200px; padding: 8px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-size: 13px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--text3); }
+  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn { padding: 6px 14px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text2); font-size: 12px; font-weight: 500; cursor: pointer; font-family: var(--font); transition: all 0.2s; }
+  .filter-btn:hover, .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .projects-list { display: flex; flex-direction: column; gap: 16px; }
+  .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .project-card:hover { border-color: var(--accent); box-shadow: var(--shadow2); }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; gap: 12px; flex-wrap: wrap; }
+  .project-title { font-size: 16px; font-weight: 700; color: var(--text); }
+  .project-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge { padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .badge-live { background: #e6ffed; color: #22543d; border: 1px solid #9ae6b4; }
+  [data-theme="dark"] .badge-live { background: #1a3d2b; color: #68d391; border-color: #276749; }
+  .badge-dev { background: #fffbeb; color: #744210; border: 1px solid #f6e05e; }
+  [data-theme="dark"] .badge-dev { background: #2d2010; color: #f6ad55; border-color: #744210; }
+  .badge-ai { background: var(--accent-light); color: var(--accent2); border: 1px solid #bee3f8; }
+  [data-theme="dark"] .badge-ai { border-color: #2a4a7f; }
+  .project-org { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+  .project-desc { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .tech-tag { padding: 2px 8px; background: var(--tag-bg); color: var(--tag-text); border-radius: 4px; font-size: 11px; font-family: var(--mono); border: 1px solid var(--border); }
+  .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .project-link { font-size: 12px; font-weight: 500; color: var(--accent); display: inline-flex; align-items: center; gap: 4px; }
+  .project-link:hover { text-decoration: underline; }
+  .project-impact { margin-top: 14px; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; font-size: 13px; color: var(--text2); font-style: italic; }
+  .project-impact strong { color: var(--text); font-style: normal; }
+  .no-results { text-align: center; padding: 48px; color: var(--text3); font-size: 14px; display: none; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .edu-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .edu-degree { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .edu-school { font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+  .edu-year { font-size: 12px; color: var(--text3); font-family: var(--mono); }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .contact-item { display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; color: var(--text); transition: border-color 0.2s; text-decoration: none; }
+  .contact-item:hover { border-color: var(--accent); text-decoration: none; }
+  .contact-icon { font-size: 18px; width: 32px; text-align: center; flex-shrink: 0; }
+  .contact-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; }
+  .contact-value { font-size: 13px; color: var(--text); font-weight: 500; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 12px; color: var(--text3); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+    #content { padding: 0 16px 60px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .now-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    nav, .btn-theme, .projects-toolbar, footer { display: none; }
+    body { font-size: 12px; }
+  }
+</style>
 </head>
 <body>
-<a class="skip" href="#content">Skip to content</a>
 
-<div class="nav">
-  <div class="nav-inner">
-    <div class="brand" aria-label="Home">
-      <div class="logo" aria-hidden="true"></div>
-      <div>
-        <div style="font-size:13px;">Robert Peng</div>
-        <div style="font-size:12px;color:var(--muted);font-weight:900;margin-top:2px;">Data • BI • AI</div>
-      </div>
-    </div>
+<a href="#content" class="skip-link">Skip to content</a>
 
-    <div class="navlinks" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div class="actions">
-      <button class="btn ghost" id="themeBtn" type="button" aria-label="Toggle theme">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Theme
-      </button>
-      <a class="btn" id="lnkLinkedIn" href="#" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn (set URL in code)">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 3h16v18H4V3Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M8 10v7M8 7v.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M12 17v-4a2 2 0 0 1 4 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M12 10v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        LinkedIn
-      </a>
-      <a class="btn" id="lnkGitHub" href="#" target="_blank" rel="noreferrer noopener" aria-label="GitHub (set URL in code)">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 2c5.5 0 10 3.8 10 9.2 0 4.3-2.9 7.9-6.9 8.9-.5.1-.7-.2-.7-.5v-2c0-.7-.3-1.1-.6-1.3 2.1-.2 4.3-1 4.3-4.8 0-1.1-.4-2-1.1-2.7.1-.3.5-1.3-.1-2.7 0 0-.9-.3-2.8 1.1-.8-.2-1.6-.3-2.4-.3s-1.6.1-2.4.3C8.5 7.4 7.6 7.7 7.6 7.7c-.6 1.4-.2 2.4-.1 2.7-.7.7-1.1 1.6-1.1 2.7 0 3.8 2.2 4.6 4.3 4.8-.2.2-.4.5-.5 1-.5.2-1.8.6-2.6-.7 0 0-.5-1-1.4-1.1 0 0-.9 0-.1.6 0 0 .6.3 1 1.3 0 0 .6 2 3 1.4v1.6c0 .3-.2.6-.7.5C4.9 21.1 2 17.5 2 13.2 2 5.8 6.5 2 12 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        GitHub
-      </a>
-      <button class="btn primary" type="button" onclick="window.print()">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6 9V3h12v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M6 17H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M6 14h12v7H6v-7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Print / PDF
-      </button>
-    </div>
+<nav>
+  <div class="nav-brand">
+    Robert Peng
+    <small>Data • BI • AI</small>
   </div>
-</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn-theme" onclick="toggleTheme()">Theme</button>
+    <a href="https://www.linkedin.com/in/xiaojiang-peng-8524b22/" target="_blank" class="btn-link">LinkedIn ↗</a>
+    <a href="https://github.com/Xiaojiangpeng" target="_blank" class="btn-link">GitHub ↗</a>
+  </div>
+</nav>
 
-<main id="content" class="container">
+<main id="content">
+
   <!-- HERO -->
-  <div class="hero">
-    <div class="card hero-left" id="about">
-      <div class="kicker"><span class="dot"></span> Modern portfolio • Clean executive theme</div>
-      <h1>Robert Peng</h1>
-      <p class="headline">IT Lead & AI Architect • Enterprise Data Platforms • Analytics Delivery</p>
-      <p class="bio">
-        IT leader with 25+ years across databases, data warehousing, and enterprise analytics.
-        Over the last 8+ years, I’ve architected AI solutions (ML/NLP/LLMs) for ticket automation,
-        knowledge systems, and operational intelligence—delivering measurable reliability and customer impact.
-      </p>
+  <section class="hero" id="about">
+    <div class="hero-eyebrow">IT Lead & AI Architect • Enterprise Data Platforms • Analytics Delivery</div>
+    <h1>Robert Peng</h1>
+    <p class="hero-subtitle">Senior Manager · Pfizer Montreal · Montreal, Quebec, Canada</p>
+    <p class="hero-desc">
+      IT leader with 25+ years across databases, data warehousing, and enterprise analytics.
+      Over the last 8+ years, I've architected AI solutions (ML/NLP/LLMs) for ticket automation,
+      knowledge systems, and operational intelligence — delivering measurable reliability and customer impact.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">Snowflake</span>
+      <span class="hero-tag">SQL Server</span>
+      <span class="hero-tag">Oracle</span>
+      <span class="hero-tag">Power BI • Semantic Models</span>
+      <span class="hero-tag">ETL: Talend • IICS • AWS Glue</span>
+      <span class="hero-tag">GenAI / NLP / LLM</span>
+      <span class="hero-tag">Governance • Lineage • SLA</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Contact</a>
+      <a href="#projects" class="btn-secondary">Featured Work ↓</a>
+    </div>
+  </section>
 
-      <div class="chips" aria-label="Key strengths">
-        <span class="chip">Snowflake • SQL Server • Oracle</span>
-        <span class="chip">Power BI • Semantic Models</span>
-        <span class="chip">ETL: Talend • IICS • AWS Glue</span>
-        <span class="chip">GenAI / NLP / LLM</span>
-        <span class="chip">Governance • Lineage • SLA</span>
+  <!-- METRICS -->
+  <section id="impact">
+    <p class="section-label">Impact Snapshot · selected outcomes</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">↓55%</div>
+        <div class="metric-label">Reduction in downtime</div>
+        <div class="metric-context">GenAI ticket automation</div>
       </div>
-
-      <div class="hero-cta">
-        <a class="btn primary" href="#contact">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/>
-            <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Contact
-        </a>
-        <a class="btn" href="#projects">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2 2 7l10 5 10-5-10-5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Featured work
-        </a>
-        <a class="btn" href="Robert_Peng_Premium_2Column_Quantified.pdf" download aria-label="Download resume PDF (place docx next to this html)">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Resume (DOCX)
-        </a>
+      <div class="metric-card">
+        <div class="metric-value">↓30%</div>
+        <div class="metric-label">Faster resolution time</div>
+        <div class="metric-context">CRM/BI improvements</div>
       </div>
-
-      <div class="small">
-        Shortcuts: <span class="kbd">/</span> focuses project search • Theme saves in your browser.
-        <br/>To enable LinkedIn/GitHub buttons, edit URLs in the script section.
+      <div class="metric-card">
+        <div class="metric-value">98%</div>
+        <div class="metric-label">SLA compliance rate</div>
+        <div class="metric-context">Operational monitoring</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">+25%</div>
+        <div class="metric-label">Customer satisfaction</div>
+        <div class="metric-context">Proactive insights</div>
       </div>
     </div>
+  </section>
 
-    <div class="hero-right">
-      <div class="card">
-        <div class="section-title" style="margin:0 0 10px;">
-          <h2 style="font-size:16px;margin:0;">Impact Snapshot</h2>
-          <div class="hint">selected outcomes</div>
-        </div>
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="label">Downtime</div>
-            <div class="value">↓ 55%</div>
-            <div class="note">GenAI ticket automation</div>
-          </div>
-          <div class="metric">
-            <div class="label">Resolution time</div>
-            <div class="value">↓ 30%</div>
-            <div class="note">CRM/BI improvements</div>
-          </div>
-          <div class="metric">
-            <div class="label">SLA compliance</div>
-            <div class="value">98%</div>
-            <div class="note">Operational monitoring</div>
-          </div>
-          <div class="metric">
-            <div class="label">Customer satisfaction</div>
-            <div class="value">+25%</div>
-            <div class="note">Proactive insights</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="section-title" style="margin:0 0 10px;">
-          <h2 style="font-size:16px;margin:0;">Now</h2>
-          <div class="hint">what I do</div>
-        </div>
-        <div class="chips">
-          <span class="chip">Enterprise data reliability</span>
-          <span class="chip">Power BI performance</span>
-          <span class="chip">Snowflake platform ops</span>
-          <span class="chip">AI-assisted support workflows</span>
-        </div>
-      </div>
+  <!-- NOW -->
+  <section id="now">
+    <p class="section-label">Now · what I do</p>
+    <div class="now-grid">
+      <div class="now-item"><div class="now-dot"></div>Enterprise data reliability & platform operations</div>
+      <div class="now-item"><div class="now-dot"></div>Power BI performance & semantic model design</div>
+      <div class="now-item"><div class="now-dot"></div>Snowflake platform operations (30+ DBs, 1,000+ tables)</div>
+      <div class="now-item"><div class="now-dot"></div>AI-assisted support workflows & ticket automation</div>
+      <div class="now-item"><div class="now-dot"></div>LLM-based data lineage & governance automation</div>
+      <div class="now-item"><div class="now-dot"></div>Multi-agent AI systems with CrewAI & Claude API</div>
     </div>
-  </div>
+  </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-title">
-      <h2>Experience</h2>
-      <div class="hint">leadership • delivery • measurable outcomes</div>
+    <p class="section-label">Experience · leadership • delivery • measurable outcomes</p>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Senior Manager – Solution and Service Management</div>
+        <div class="exp-period">2023 – Present</div>
+      </div>
+      <div class="exp-company">Pfizer (Global Support and Operations) · Montreal, Canada</div>
+      <ul class="exp-list">
+        <li>Lead application support teams delivering highly available data and analytics services across global Pfizer platforms.</li>
+        <li>Implemented <strong>GenAI/NLP/LLM ticket workflow automation</strong> (RCA + solution recommendations) using CrewAI multi-agent architecture and Claude API, reducing downtime by ~55%.</li>
+        <li>Oversaw Snowflake (30+ DBs, 1,000+ tables), ETL pipelines (IICS + AWS Glue, 200+ task flows), and BI applications.</li>
+        <li>Built BI solution to proactively identify CRM issues, improving customer satisfaction by ~25% and reducing resolution time by ~30%.</li>
+        <li>Automated <strong>data lineage creation using LLMs</strong> (Claude API + LangChain) to accelerate impact analysis and reduce tracing time by ~35%.</li>
+      </ul>
     </div>
 
-    <div class="grid">
-      <article class="card exp">
-        <div class="exp-top">
-          <div>
-            <div class="role">Senior Manager – Solution and Service Management</div>
-            <div class="org">Pfizer (Global Support and Operations) • Montreal, Canada</div>
-          </div>
-          <div class="dates">2023 – Present</div>
-        </div>
-        <ul>
-          <li>Lead application support teams delivering highly available data and analytics services.</li>
-          <li>Implemented GenAI/NLP/LLM ticket workflow automation (RCA + solution recommendations), reducing downtime by ~55%.</li>
-          <li>Oversaw Snowflake (30+ DBs, 1,000+ tables), ETL pipelines (IICS + AWS Glue, 200+ task flows), and BI applications.</li>
-          <li>Built BI solution to proactively identify CRM issues, improving customer satisfaction by ~25% and reducing resolution time by ~30%.</li>
-          <li>Automated data lineage creation using LLMs to accelerate impact analysis and reduce tracing time by ~35%.</li>
-        </ul>
-      </article>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Senior Manager – Data/Database Integrity</div>
+        <div class="exp-period">2017 – 2023</div>
+      </div>
+      <div class="exp-company">IATA (Global Aviation Data Management) · Montreal, Canada</div>
+      <ul class="exp-list">
+        <li>Directed data architecture, modeling, and governance for secure, scalable analytical solutions supporting 290+ airline members.</li>
+        <li>Built Microsoft-based CRM + monitoring (SQL Server, Power BI, PowerApps) for real-time SLA tracking; achieved ~98% SLA compliance.</li>
+        <li>Developed <strong>NLP models (BERT-based)</strong> using Hugging Face to classify free-text flight incident descriptions into ICAO aviation safety taxonomies.</li>
+        <li>Delivered data integration using Talend Platform (TMC) including Stewardship to improve data quality and SLA adherence.</li>
+      </ul>
+    </div>
 
-      <article class="card exp">
-        <div class="exp-top">
-          <div>
-            <div class="role">Senior Manager – Data/Database Integrity</div>
-            <div class="org">IATA (Global Aviation Data Management) • Montreal, Canada</div>
-          </div>
-          <div class="dates">2017 – 2023</div>
-        </div>
-        <ul>
-          <li>Directed data architecture, modeling, and governance for secure, scalable analytical solutions.</li>
-          <li>Built Microsoft-based CRM + monitoring (SQL Server, Power BI, PowerApps) for real-time SLA tracking; achieved ~98% SLA compliance.</li>
-          <li>Developed NLP models (BERT-based) to classify free-text flight incident descriptions into aviation safety taxonomies.</li>
-          <li>Delivered data integration using Talend Platform (TMC) including Stewardship to improve data quality and SLA adherence.</li>
-        </ul>
-      </article>
-
-      <article class="card exp">
-        <div class="exp-top">
-          <div>
-            <div class="role">Manager – Safety Database, Safety & Flight Operations</div>
-            <div class="org">IATA • Montreal, Canada</div>
-          </div>
-          <div class="dates">2011 – 2017</div>
-        </div>
-        <ul>
-          <li>Designed schemas and data warehouse supporting incident/accident datasets; integrated data from 400+ airline members.</li>
-          <li>Published analytics dashboards (QlikView, Power BI) for 10,000+ users; managed access/security and platform operations.</li>
-          <li>Led common dimension tables (shared dimensions/MDM) to standardize master data across platforms.</li>
-        </ul>
-      </article>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Manager – Safety Database, Safety & Flight Operations</div>
+        <div class="exp-period">2011 – 2017</div>
+      </div>
+      <div class="exp-company">IATA · Montreal, Canada</div>
+      <ul class="exp-list">
+        <li>Designed schemas and data warehouse supporting incident/accident datasets; integrated data from 400+ airline members.</li>
+        <li>Published analytics dashboards (QlikView, Power BI) for 10,000+ users; managed access/security and platform operations.</li>
+        <li>Led common dimension tables (shared dimensions/MDM) to standardize master data across platforms.</li>
+      </ul>
     </div>
   </section>
 
   <!-- SKILLS -->
   <section id="skills">
-    <div class="section-title">
-      <h2>Skills</h2>
-      <div class="hint">platforms • engineering • analytics • AI</div>
-    </div>
+    <p class="section-label">Skills · platforms • engineering • analytics • AI</p>
+    <div class="skills-grid">
 
-    <div class="skills">
-      <div class="skill">
-        <h3>Data Platforms</h3>
-        <span class="chip">Snowflake</span><span class="chip">Oracle</span><span class="chip">SQL Server</span><span class="chip">MySQL</span>
+      <div class="skill-group">
+        <h3>Database</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL Server</span>
+          <span class="skill-tag">Oracle</span>
+          <span class="skill-tag">Snowflake</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Azure SQL</span>
+        </div>
       </div>
-      <div class="skill">
+
+      <div class="skill-group">
         <h3>ETL & Integration</h3>
-        <span class="chip">Talend Studio</span><span class="chip">Informatica</span><span class="chip">SSIS</span><span class="chip">AWS Glue</span><span class="chip">IICS</span>
+        <div class="skill-tags">
+          <span class="skill-tag">SSIS</span>
+          <span class="skill-tag">Talend Studio</span>
+          <span class="skill-tag">IICS (Informatica)</span>
+          <span class="skill-tag">AWS Glue</span>
+          <span class="skill-tag">dbt</span>
+          <span class="skill-tag">ADF</span>
+          <span class="skill-tag">DataStage</span>
+        </div>
       </div>
-      <div class="skill">
-        <h3>BI & Semantic Layer</h3>
-        <span class="chip">Power BI</span><span class="chip">QlikView</span><span class="chip">Qlik Sense</span><span class="chip">Star Schema</span><span class="chip">RLS</span>
+
+      <div class="skill-group">
+        <h3>BI & Analytics</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">QlikView</span>
+          <span class="skill-tag">Qlik Sense</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">SSRS</span>
+          <span class="skill-tag">DAX</span>
+          <span class="skill-tag">Star Schema</span>
+          <span class="skill-tag">Semantic Models</span>
+        </div>
       </div>
-      <div class="skill">
+
+      <div class="skill-group">
+        <h3>Data Governance</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Data Lineage</span>
+          <span class="skill-tag">Data Cataloging</span>
+          <span class="skill-tag">Metadata Management</span>
+          <span class="skill-tag">Data Stewardship</span>
+          <span class="skill-tag">Data Quality</span>
+          <span class="skill-tag">PII / GDPR</span>
+          <span class="skill-tag">STTM</span>
+          <span class="skill-tag">Talend Data Fabric</span>
+          <span class="skill-tag">ISO 9001/27001</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
         <h3>AI / NLP / LLM</h3>
-        <span class="chip">Ticket Automation</span><span class="chip">Text Classification (BERT)</span><span class="chip">LLM-assisted Lineage</span><span class="chip">Knowledge Systems</span>
+        <div class="skill-tags">
+          <span class="skill-tag">Claude API</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">CrewAI</span>
+          <span class="skill-tag">Hugging Face</span>
+          <span class="skill-tag">ChromaDB / RAG</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Azure OpenAI</span>
+          <span class="skill-tag">FastAPI</span>
+        </div>
       </div>
-      <div class="skill">
-        <h3>Governance & Security</h3>
-        <span class="chip">Data Standards</span><span class="chip">Metadata/Lineage</span><span class="chip">ISO 9001/27001</span><span class="chip">GDPR/CCPA awareness</span>
+
+      <div class="skill-group">
+        <h3>Development & DevOps</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">GitHub CI/CD</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">Agile/Scrum</span>
+          <span class="skill-tag">JIRA</span>
+        </div>
       </div>
-      <div class="skill">
-        <h3>Delivery</h3>
-        <span class="chip">Agile/Scrum</span><span class="chip">JIRA</span><span class="chip">Confluence</span><span class="chip">SVN/Git</span>
-      </div>
+
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-title">
-      <h2>Featured Projects</h2>
-      <div class="hint">search + filter</div>
-    </div>
-
-    <div class="proj-controls" aria-label="Project controls">
-      <div class="search" role="search">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <input id="projSearch" type="text" placeholder="Search projects (press /)..." autocomplete="off" />
-      </div>
-
-      <div class="filters" aria-label="Filters">
-        <button class="filter" type="button" data-filter="All" aria-pressed="true">All</button>
-        <button class="filter" type="button" data-filter="AI" aria-pressed="false">AI</button>
-        <button class="filter" type="button" data-filter="BI" aria-pressed="false">BI</button>
-        <button class="filter" type="button" data-filter="Data Platform" aria-pressed="false">Data Platform</button>
-        <button class="filter" type="button" data-filter="Governance" aria-pressed="false">Governance</button>
+    <p class="section-label">Featured Projects · search + filter</p>
+    <div class="projects-toolbar">
+      <input type="search" class="search-input" id="projectSearch" placeholder="Search projects... (press / to focus)" aria-label="Search projects">
+      <div class="filter-btns">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
+        <button class="filter-btn" data-filter="bi">BI</button>
+        <button class="filter-btn" data-filter="data-platform">Data Platform</button>
+        <button class="filter-btn" data-filter="governance">Governance</button>
       </div>
     </div>
 
-    <div id="projGrid" class="projects" aria-live="polite"></div>
-    <div id="projEmpty" class="empty" style="display:none;margin-top:10px;">No projects match your search/filter.</div>
+    <div class="projects-list" id="projectsList">
+
+      <div class="project-card" data-tags="ai governance" data-title="ticketing ai auto categorization rca resolution servicenow crewai">
+        <div class="project-header">
+          <div class="project-title">Ticketing AI — Auto-Categorization, RCA & Resolution</div>
+          <div class="project-badges"><span class="badge badge-live">Live</span><span class="badge badge-ai">AI</span></div>
+        </div>
+        <div class="project-org">Pfizer · Personal Portfolio · 2024</div>
+        <p class="project-desc">Multi-agent AI system that automatically classifies IT support tickets, performs root cause analysis by searching 1,186 historical tickets via semantic similarity (ChromaDB), and generates step-by-step resolution recommendations. Deployed on Streamlit Cloud with a FastAPI REST layer for enterprise integration. Built on anonymized Pfizer ServiceNow data.</p>
+        <div class="project-tech">
+          <span class="tech-tag">CrewAI</span><span class="tech-tag">Claude API</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">LangChain</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Docker</span><span class="tech-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Xiaojiangpeng/Ticketing-AI" target="_blank" class="project-link">GitHub ↗</a>
+          <a href="https://github.com/Xiaojiangpeng/Ticketing-AI" target="_blank" class="project-link">Live Demo ↗</a>
+        </div>
+        <div class="project-impact"><strong>Impact:</strong> Reduced ticket triage from 10 minutes to ~10 seconds per ticket. Downtime reduction of ~55% through proactive RCA and resolution recommendations.</div>
+      </div>
+
+      <div class="project-card" data-tags="ai" data-title="aviation safety rag assistant langchain chromadb hugging face iata">
+        <div class="project-header">
+          <div class="project-title">Aviation Safety RAG Assistant</div>
+          <div class="project-badges"><span class="badge badge-live">Live</span><span class="badge badge-ai">AI</span></div>
+        </div>
+        <div class="project-org">IATA · Personal Portfolio · 2024</div>
+        <p class="project-desc">Retrieval-Augmented Generation (RAG) system for aviation safety knowledge Q&A. Ingests IATA safety documents, chunks and embeds them using Hugging Face sentence transformers, stores in ChromaDB, and answers technical questions grounded in source documents via Claude API — eliminating hallucination. Fully containerized with Docker.</p>
+        <div class="project-tech">
+          <span class="tech-tag">LangChain</span><span class="tech-tag">Claude API</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">Hugging Face</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Docker</span><span class="tech-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Xiaojiangpeng/Aviation-Safety-RAG" target="_blank" class="project-link">GitHub ↗</a>
+          <a href="https://github.com/Xiaojiangpeng/Aviation-Safety-RAG" target="_blank" class="project-link">Live Demo ↗</a>
+        </div>
+        <div class="project-impact"><strong>Context:</strong> Built on IATA safety data management expertise. Demonstrates zero-hallucination Q&A on proprietary document collections using RAG architecture.</div>
+      </div>
+
+      <div class="project-card" data-tags="bi data-platform" data-title="power bi crm monitoring sla pfizer dashboard">
+        <div class="project-header">
+          <div class="project-title">Power BI CRM Monitoring & SLA Intelligence Platform</div>
+          <div class="project-badges"><span class="badge badge-live">Delivered</span></div>
+        </div>
+        <div class="project-org">Pfizer · 2023</div>
+        <p class="project-desc">Proactive BI solution monitoring CRM data quality and application health in real time. Automated alerting surfaces issues before they impact end users. Reduced resolution time by 30% and improved customer satisfaction by 25% through early detection and targeted dashboards for support team leads.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Power BI</span><span class="tech-tag">SQL Server</span><span class="tech-tag">Snowflake</span><span class="tech-tag">IICS</span><span class="tech-tag">DAX</span>
+        </div>
+        <div class="project-impact"><strong>Impact:</strong> Customer satisfaction +25% · Resolution time ↓30% · Proactive issue detection before end-user impact.</div>
+      </div>
+
+      <div class="project-card" data-tags="ai governance" data-title="llm data lineage sttm automation pfizer langchain claude">
+        <div class="project-header">
+          <div class="project-title">LLM-Based Data Lineage & STTM Automation</div>
+          <div class="project-badges"><span class="badge badge-live">Delivered</span><span class="badge badge-ai">AI</span></div>
+        </div>
+        <div class="project-org">Pfizer · 2024</div>
+        <p class="project-desc">Automated Source-to-Target Mapping (STTM) and data lineage documentation generation using Claude API and LangChain. Analyzes ETL code and SQL scripts to produce structured lineage artifacts automatically — including column-level mappings and transformation rules. Output validation against actual schema metadata prevents hallucinated column names.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Claude API</span><span class="tech-tag">LangChain</span><span class="tech-tag">Python</span><span class="tech-tag">SQL Server</span><span class="tech-tag">Snowflake</span>
+        </div>
+        <div class="project-impact"><strong>Impact:</strong> Lineage documentation time ↓35% · Eliminated manual STTM creation · Full audit trail on AI-generated artifacts.</div>
+      </div>
+
+      <div class="project-card" data-tags="data-platform governance" data-title="iata sla monitoring sql server power bi aviation airline">
+        <div class="project-header">
+          <div class="project-title">IATA Real-Time SLA Monitoring & Aviation Data Platform</div>
+          <div class="project-badges"><span class="badge badge-live">Delivered</span></div>
+        </div>
+        <div class="project-org">IATA · 2017 – 2023</div>
+        <p class="project-desc">End-to-end aviation data platform integrating incident and safety datasets from 400+ airline members. Built Microsoft-based CRM and real-time SLA monitoring using SQL Server, Power BI, and PowerApps. Delivered analytical dashboards to 10,000+ users globally. Achieved ~98% SLA compliance.</p>
+        <div class="project-tech">
+          <span class="tech-tag">SQL Server</span><span class="tech-tag">Power BI</span><span class="tech-tag">PowerApps</span><span class="tech-tag">Talend</span><span class="tech-tag">QlikView</span>
+        </div>
+        <div class="project-impact"><strong>Impact:</strong> 98% SLA compliance · 10,000+ dashboard users · 400+ airline members integrated.</div>
+      </div>
+
+      <div class="project-card" data-tags="ai governance" data-title="ai data governance catalog pii detection sttm lineage">
+        <div class="project-header">
+          <div class="project-title">AI Data Governance Assistant — Catalog, PII & STTM</div>
+          <div class="project-badges"><span class="badge badge-dev">In Development</span><span class="badge badge-ai">AI</span></div>
+        </div>
+        <div class="project-org">Personal Portfolio · 2025</div>
+        <p class="project-desc">AI-powered data governance platform combining automated STTM generation from ETL/SQL code, PII detection across structured and unstructured data, data catalog auto-population, and business glossary generation. Targets pharma and aviation industry schemas. Built with Claude API, LangChain, FastAPI, and Streamlit.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Claude API</span><span class="tech-tag">LangChain</span><span class="tech-tag">FastAPI</span><span class="tech-tag">ChromaDB</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Xiaojiangpeng" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="no-results" id="noResults">No projects match your search or filter.</div>
   </section>
 
   <!-- EDUCATION -->
   <section id="education">
-    <div class="section-title">
-      <h2>Education</h2>
-      <div class="hint">academic foundation</div>
-    </div>
-
-    <div class="grid">
-      <div class="card">
-        <div class="role">BSc, Management Information Systems</div>
-        <div class="org">Concordia University • Montreal, Canada</div>
+    <p class="section-label">Education · academic foundation</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">BSc, Management Information Systems</div>
+        <div class="edu-school">Concordia University</div>
+        <div class="edu-year">Montreal, Canada</div>
       </div>
-      <div class="card">
-        <div class="role">BSc, Computer Science</div>
-        <div class="org">Tianjin Technological University • Tianjin, China</div>
+      <div class="edu-card">
+        <div class="edu-degree">BSc, Computer Science</div>
+        <div class="edu-school">Tianjin Technological University</div>
+        <div class="edu-year">Tianjin, China</div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="section-title">
-      <h2>Contact</h2>
-      <div class="hint">let’s connect</div>
-    </div>
-
-    <div class="card">
-      <div class="contact">
-        <a class="btn primary" href="mailto:pengxiaojiang@gmail.com" aria-label="Email Robert">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 4h16v16H4V4Z" stroke="currentColor" stroke-width="2"/>
-            <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          pengxiaojiang@gmail.com
-        </a>
-        <a class="btn" href="tel:+15148911188" aria-label="Call Robert">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 2h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2C9 20 4 15 2 4c0-1 1-2 2-2h3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          (514) 891-1188
-        </a>
-        <span class="btn" role="text" aria-label="Location">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          Montreal, Quebec, Canada
-        </span>
-        <a class="btn" href="Robert_Peng_Premium_2Column_Quantified.pdf" download aria-label="Download resume PDF (place docx next to this html)">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="m8 10 4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4 17v3h16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-          Resume (DOCX)
-        </a>
-      </div>
-
-      <div class="small" style="margin-top:12px;">
-        <b>Note:</b> Robert Peng
+    <p class="section-label">Contact · let's connect</p>
+    <div class="contact-grid">
+      <a href="mailto:pengxiaojiang@gmail.com" class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-info"><div class="contact-label">Email</div><div class="contact-value">pengxiaojiang@gmail.com</div></div>
+      </a>
+      <a href="tel:+15148911188" class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div class="contact-info"><div class="contact-label">Phone</div><div class="contact-value">(514) 891-1188</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/xiaojiang-peng-8524b22/" target="_blank" class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div class="contact-info"><div class="contact-label">LinkedIn</div><div class="contact-value">Xiaojiang (Robert) Peng</div></div>
+      </a>
+      <a href="https://github.com/Xiaojiangpeng" target="_blank" class="contact-item">
+        <div class="contact-icon">🐙</div>
+        <div class="contact-info"><div class="contact-label">GitHub</div><div class="contact-value">github.com/Xiaojiangpeng</div></div>
+      </a>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-info"><div class="contact-label">Location</div><div class="contact-value">Montreal, Quebec, Canada</div></div>
       </div>
     </div>
-
-    <div class="footer">© <span id="yr"></span> Robert Peng • Modern portfolio + executive theme (v2)</div>
   </section>
+
 </main>
 
+<footer>
+  © Robert Peng · Modern portfolio + executive theme (v3) ·
+  <a href="https://github.com/Xiaojiangpeng" target="_blank">github.com/Xiaojiangpeng</a>
+</footer>
+
 <script>
-  // ===========================
-  // 1) Theme toggle (persisted)
-  // ===========================
-  const root = document.documentElement;
-  const btn = document.getElementById('themeBtn');
-
-  function setTheme(t){
-    root.setAttribute('data-theme', t);
-    localStorage.setItem('rp_theme', t);
+  // Theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  function toggleTheme() {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
   }
-  function toggleTheme(){
-    const cur = root.getAttribute('data-theme') || 'light';
-    setTheme(cur === 'dark' ? 'light' : 'dark');
+
+  // Project filter & search
+  const cards = document.querySelectorAll('.project-card');
+  const noResults = document.getElementById('noResults');
+  const searchInput = document.getElementById('projectSearch');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  let activeFilter = 'all';
+
+  function filterProjects() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+    cards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      const title = card.dataset.title || '';
+      const matchFilter = activeFilter === 'all' || tags.includes(activeFilter);
+      const matchSearch = !query || title.includes(query) || tags.includes(query);
+      const show = matchFilter && matchSearch;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
   }
-  btn.addEventListener('click', toggleTheme);
 
-  const saved = localStorage.getItem('rp_theme');
-  if(saved === 'dark' || saved === 'light') setTheme(saved);
-
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', (e)=>{
-      const id = a.getAttribute('href');
-      const el = document.querySelector(id);
-      if(!el) return;
-      e.preventDefault();
-      el.scrollIntoView({behavior:'smooth', block:'start'});
-      history.replaceState(null, '', id);
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      filterProjects();
     });
   });
 
-  // =====================================
-  // 2) Set your social links (edit here!)
-  // =====================================
-  // Replace these with your real URLs:
-  const LINKEDIN_URL = "https://www.linkedin.com/in/xiaojiang-peng-8524b22/"; // e.g., "https://www.linkedin.com/in/your-handle/"
-  const GITHUB_URL   = ""; // e.g., "https://github.com/your-handle"
+  searchInput.addEventListener('input', filterProjects);
 
-  function wireLink(id, url){
-    const el = document.getElementById(id);
-    if(!url){
-      el.style.display = "none"; // hide if not set
-      return;
-    }
-    el.href = url;
-  }
-  wireLink("lnkLinkedIn", LINKEDIN_URL);
-  wireLink("lnkGitHub", GITHUB_URL);
-
-  // =====================================
-  // 3) Projects data + search/filter UI
-  // =====================================
-  const PROJECTS = [
-    {
-      title: "GenAI Support Automation",
-      summary: "LLM/NLP-assisted ticket triage, root-cause capture, and solution recommendation to reduce downtime and standardize resolution notes.",
-      tags: ["LLM", "NLP", "Workflow"],
-      categories: ["AI", "Governance"]
-    },
-    {
-      title: "LLM-assisted Data Lineage",
-      summary: "Automated lineage documentation by parsing SQL and metadata to accelerate impact analysis and improve traceability.",
-      tags: ["LLM", "Metadata", "Lineage"],
-      categories: ["AI", "Governance", "Data Platform"]
-    },
-    {
-      title: "Enterprise BI for CRM Health",
-      summary: "Proactive monitoring dashboards and issue detection enabling faster resolution and improved customer satisfaction.",
-      tags: ["Power BI", "Semantic Model", "SLA"],
-      categories: ["BI", "Governance"]
-    },
-    {
-      title: "Safety NLP Classification",
-      summary: "BERT-based pipeline to map free-text incident descriptions into standardized safety taxonomies for analytics and reporting.",
-      tags: ["BERT", "NLP", "Taxonomy"],
-      categories: ["AI"]
-    },
-    {
-      title: "Snowflake Platform Operations",
-      summary: "Reliability, cost and performance optimization for multi-database Snowflake environments supporting enterprise analytics.",
-      tags: ["Snowflake", "Performance", "Ops"],
-      categories: ["Data Platform"]
-    },
-    {
-      title: "ETL Stewardship Orchestration",
-      summary: "Improved Talend Stewardship integration reliability by batching tasks to avoid component limits and eliminate intermittent failures.",
-      tags: ["Talend", "Stewardship", "ETL"],
-      categories: ["Data Platform", "Governance"]
-    },
-  ];
-
-  const grid = document.getElementById("projGrid");
-  const empty = document.getElementById("projEmpty");
-  const search = document.getElementById("projSearch");
-  const filterBtns = Array.from(document.querySelectorAll(".filter"));
-
-  let activeFilter = "All";
-
-  function escapeHtml(s){
-    return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
-  }
-
-  function render(){
-    const q = (search.value || "").trim().toLowerCase();
-
-    const items = PROJECTS.filter(p => {
-      const matchesFilter = activeFilter === "All" ? true : (p.categories || []).includes(activeFilter);
-      if(!matchesFilter) return false;
-
-      if(!q) return true;
-      const hay = (p.title + " " + p.summary + " " + (p.tags||[]).join(" ") + " " + (p.categories||[]).join(" ")).toLowerCase();
-      return hay.includes(q);
-    });
-
-    grid.innerHTML = items.map(p => `
-      <div class="proj">
-        <div>
-          ${(p.categories||[]).slice(0,2).map(c => `<span class="badge">${escapeHtml(c)}</span>`).join("")}
-        </div>
-        <h3>${escapeHtml(p.title)}</h3>
-        <p>${escapeHtml(p.summary)}</p>
-        <div class="tags chips">
-          ${(p.tags||[]).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join("")}
-        </div>
-      </div>
-    `).join("");
-
-    empty.style.display = items.length ? "none" : "block";
-  }
-
-  filterBtns.forEach(b => {
-    b.addEventListener("click", () => {
-      activeFilter = b.dataset.filter || "All";
-      filterBtns.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-      render();
-    });
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
+    if (e.key === 'Escape') searchInput.blur();
   });
 
-  search.addEventListener("input", render);
-
-  // keyboard shortcut: "/" focuses search
-  window.addEventListener("keydown", (e) => {
-    if(e.key === "/" && document.activeElement !== search){
-      e.preventDefault();
-      search.focus();
-    }
-    if(e.key === "Escape" && document.activeElement === search){
-      search.blur();
-      search.value = "";
-      render();
-    }
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
   });
-
-  render();
 </script>
 </body>
 </html>
